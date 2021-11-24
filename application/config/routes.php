@@ -57,6 +57,11 @@ $route['dashboard'] = 'Dashboard/index';
 $route['login']  = 'Authentication/index';
 $route['logout'] = 'Authentication/logout';
 
+// KATEGORI
+$route['kategori'] = 'Kategori/index';
+$route['kategori/add']           = 'kategori/create';
+$route['kategori/delete/(:num)'] = 'kategori/delete/$1';
+$route['kategori/edit/(:num)']   = 'kategori/update/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
