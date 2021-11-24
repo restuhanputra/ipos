@@ -30,7 +30,6 @@
             <i class="nav-icon fas fa-home"></i>
             <p>
               Dashboard
-              <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>
         </li>
@@ -57,10 +56,9 @@
         <!-- Logout -->
         <li class="nav-item">
           <a href="<?= base_url('logout') ?>" class="nav-link">
-            <i class="nav-icon fas fa-home"></i>
+            <i class="nav-icon fas fa-power-off"></i>
             <p>
               Logout
-              <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>
         </li>
