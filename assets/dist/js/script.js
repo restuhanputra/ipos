@@ -30,21 +30,10 @@ $(document).ready(function () {
   }
 
   // DELETE BUTTON
-  $(document).on('click', '.delete-department', function () {
+  $(document).on('click', '.delete-kategori', function () {
     var id = $(this).data("id");
-    var url = `${base_url}department/delete/${id}`;
+    var url = `${base_url}kategori/delete/${id}`;
     deleteQuestion(url, "Yakin akan menghapus data ini ?");
   });
 
-  $(document).on('click', '.delete-unit', function () {
-    var id = $(this).data("id");
-    var url = `${base_url}unit/delete/${id}`;
-    deleteQuestion(url, "Yakin akan menghapus data ini ?");
-  });
-
-  $(document).on('click', '.delete-role', function () {
-    var id = $(this).data("id");
-    var url = `${base_url}role/delete/${id}`;
-    deleteQuestion(url, "Yakin akan menghapus data ini ?");
-  });
 });
