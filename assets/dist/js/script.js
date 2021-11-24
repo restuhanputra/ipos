@@ -36,4 +36,10 @@ $(document).ready(function () {
     deleteQuestion(url, "Yakin akan menghapus data ini ?");
   });
 
+  $(document).on('click', '.delete-satuan', function () {
+    var id = $(this).data("id");
+    var url = `${base_url}satuan/delete/${id}`;
+    deleteQuestion(url, "Yakin akan menghapus data ini ?");
+  });
+
 });
