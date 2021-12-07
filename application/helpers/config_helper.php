@@ -7,14 +7,16 @@
  * @param string $data
  * @return void
  */
-function template($page = null, $data = null)
-{
-  $ci = get_instance();
-  $ci->load->view('template/header', $data);
-  $ci->load->view('template/topbar', $data);
-  $ci->load->view('template/sidebar', $data);
-  $ci->load->view($page, $data);
-  $ci->load->view('template/footer', $data);
+if (!function_exists('template')) {
+  function template($page = null, $data = null)
+  {
+    $ci = get_instance();
+    $ci->load->view('template/header', $data);
+    $ci->load->view('template/topbar', $data);
+    $ci->load->view('template/sidebar', $data);
+    $ci->load->view($page, $data);
+    $ci->load->view('template/footer', $data);
+  }
 }
 
 /**
@@ -22,12 +24,22 @@ function template($page = null, $data = null)
  *
  * @return void
  */
-function usetFlash()
-{
-  if (isset($_SESSION['success'])) {
-    unset($_SESSION['success']);
+if (!function_exists('usetFlash')) {
+  function usetFlash()
+  {
+    if (isset($_SESSION['success'])) {
+      unset($_SESSION['success']);
+    }
+    if (isset($_SESSION['error'])) {
+      unset($_SESSION['error']);
+    }
   }
-  if (isset($_SESSION['error'])) {
-    unset($_SESSION['error']);
+}
+
+if (!function_exists('rupiah')) {
+  function rupiah($angka)
+  {
+    $hasil_rupiah = number_format($angka, 0, ',', '.');
+    return $hasil_rupiah;
   }
 }
