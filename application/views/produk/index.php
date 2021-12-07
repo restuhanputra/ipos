@@ -39,7 +39,6 @@
               }
             </style>
             <div class="card-body">
-              <?= print_r($dataProduk); ?>
               <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
                 <thead>
                   <tr>
@@ -63,7 +62,7 @@
                       <td><?= $produk->kategori_nama; ?></td>
                       <td><?= $produk->satuan_nama; ?></td>
                       <td>Rp. <?= rupiah($produk->harga); ?></td>
-                      <td><?= $produk->id; ?></td>
+                      <td></td>
                       <td style="text-align: center;">
                         <a href="<?= base_url('produk/edit/' . $produk->id); ?>" class="btn btn-success">Edit</a>
                         <button class="btn btn-danger delete-produk" data-id="<?= $produk->id; ?>">Hapus</button>
