@@ -63,11 +63,17 @@ $route['kategori/add']           = 'kategori/create';
 $route['kategori/delete/(:num)'] = 'kategori/delete/$1';
 $route['kategori/edit/(:num)']   = 'kategori/update/$1';
 
-// KATEGORI
+// SATUAN
 $route['satuan']               = 'Satuan/index';
 $route['satuan/add']           = 'Satuan/create';
 $route['satuan/delete/(:num)'] = 'Satuan/delete/$1';
 $route['satuan/edit/(:num)']   = 'Satuan/update/$1';
+
+// PRODUK
+$route['produk']               = 'Produk/index';
+$route['produk/add']           = 'Produk/create';
+$route['produk/delete/(:num)'] = 'Produk/delete/$1';
+$route['produk/edit/(:num)']   = 'Produk/update/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
