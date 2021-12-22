@@ -101,7 +101,7 @@ class Produk extends CI_Controller
     $dataSatuan   = $this->Satuan->getAllData();
     $cek          = $this->Produk->getDataBy(['produk.id' => $id]);
     if ($cek->num_rows() > 0) {
-      $row         = $cek->row();
+      $row       = $cek->row();
       $oldProduk = $row->produk_nama;
 
       $this->_validation($oldProduk);
