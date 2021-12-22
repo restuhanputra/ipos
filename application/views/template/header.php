@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/select2/css/select2.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
