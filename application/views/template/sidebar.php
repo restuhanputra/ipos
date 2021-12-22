@@ -4,7 +4,7 @@
   <a href="<?= base_url() ?>" class="brand-link">
     <img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <!-- <span class="brand-text font-weight-light">AdminLTE 3</span> -->
-    <span class="brand-text font-weight-light">Inventory</span>
+    <span class="brand-text font-weight-light">Ipos</span>
   </a>
 
   <!-- Sidebar -->
@@ -34,7 +34,7 @@
           </a>
         </li>
         <!-- /.Dashboard -->
-        <!-- Inventory -->
+        <!-- Produk -->
         <li class="nav-item <?= $this->uri->segment(1) === 'produk' || $this->uri->segment(1) === 'kategori' || $this->uri->segment(1) === 'satuan' ? 'menu-open' : 'menu-close'; ?>"">
           <a href=" #" class="nav-link">
           <i class="nav-icon fas fa-archive"></i>
@@ -68,7 +68,34 @@
             </li>
           </ul>
         </li>
-        <!-- /.Inventory -->
+        <!-- /.Produk -->
+        <!-- Produk -->
+        <li class="nav-item <?= $this->uri->segment(1) === 'stokmasuk' || $this->uri->segment(1) === 'stokkeluar'  ? 'menu-open' : 'menu-close'; ?>"">
+          <a href=" #" class="nav-link">
+          <i class="nav-icon fas fa-archive"></i>
+          <p>
+            Stok
+            <i class="right fas fa-angle-left"></i>
+          </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= base_url('stokmasuk') ?>" class="nav-link <?= $this->uri->segment(1) === 'stokmasuk' ? 'active' : ''; ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Stok Masuk</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= base_url('stokkeluar') ?>" class="nav-link <?= $this->uri->segment(1) === 'stokkeluar' ? 'active' : ''; ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Stok Keluar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- /.Produk -->
         <!-- Logout -->
         <li class="nav-item">
           <a href="<?= base_url('logout') ?>" class="nav-link">
