@@ -33,7 +33,7 @@
                 <div class="form-group">
                   <label for="produk_id">Produk</label>
 
-                  <select id="selectPlugin" class="form-control <?= form_error('produk_id') ? 'is-invalid' : ''; ?>" name="produk_id" id="produk_id" onchange="return autofill(this.value)">
+                  <select id="selectPlugin" class="form-control <?= form_error('produk_id') ? 'is-invalid' : ''; ?>" name="produk_id" id="produk_id" onchange="return autofill_stokmasuk(this.value)">
                     <option value="">Pilih Produk</option>
                     <?php foreach ($dataProduk as $produk) { ?>
                       <option value="<?= $produk->id; ?>"><?= $produk->produk_nama; ?></option>
