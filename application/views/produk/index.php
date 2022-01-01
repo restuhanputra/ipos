@@ -47,7 +47,7 @@
                     <th>Kategori</th>
                     <th>Satuan</th>
                     <th>Harga</th>
-                    <th>Stock (Data Masuk)</th>
+                    <!-- <th>Stock (Data Masuk)</th> -->
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -62,7 +62,7 @@
                       <td><?= $produk->kategori_nama; ?></td>
                       <td><?= $produk->satuan_nama; ?></td>
                       <td>Rp. <?= rupiah($produk->harga); ?></td>
-                      <td></td>
+                      <!-- <td></td> -->
                       <td style="text-align: center;">
                         <a href="<?= base_url('produk/edit/' . $produk->id); ?>" class="btn btn-success">Edit</a>
                         <button class="btn btn-danger delete-produk" data-id="<?= $produk->id; ?>">Hapus</button>
