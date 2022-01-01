@@ -81,5 +81,11 @@ $route['stokmasuk/add']           = 'Stokmasuk/create';
 $route['stokmasuk/delete/(:num)'] = 'Stokmasuk/delete/$1';
 $route['stokmasuk/edit/(:num)']   = 'Stokmasuk/update/$1';
 
+// STOK KELUAR
+$route['stokkeluar']               = 'Stokkeluar/index';
+$route['stokkeluar/add']           = 'Stokkeluar/create';
+$route['stokkeluar/delete/(:num)'] = 'Stokkeluar/delete/$1';
+$route['stokkeluar/edit/(:num)']   = 'Stokkeluar/update/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
