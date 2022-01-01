@@ -73,7 +73,7 @@
     });
   });
 
-  function autofill(id) {
+  function autofill_stokmasuk(id) {
     // var produkId = document.getElementById("produk_id").value;
     $.ajax({
       url: "<?php echo base_url(); ?>stokmasuk/getProduk",
@@ -82,7 +82,7 @@
         if (id == 0) {
           document.getElementById('harga').value = '';
         }
-        var hasil = JSON.parse(data);
+        let hasil = JSON.parse(data);
         // document.getElementById('harga').value = hasil.harga;
         $.each(hasil, function(key, val) {
           document.getElementById('harga').value = val.harga;
@@ -95,6 +95,60 @@
       }
     });
   }
+
+  function autofill_stokkeluar(id) {
+    $.ajax({
+      url: "<?php echo base_url(); ?>stokkeluar/getProduk",
+      data: 'produk=' + id,
+      success: function(data) {
+        if (id == 0) {
+          document.getElementById('harga').value = '';
+          document.getElementById('jumlah_masuk').value = '';
+          document.getElementById('stok_masuk_id').value = '';
+        }
+        let hasil = JSON.parse(data);
+        $.each(hasil, function(key, val) {
+          document.getElementById('harga').value = val.harga;
+          document.getElementById('jumlah_masuk').value = val.jumlah;
+          document.getElementById('stok_masuk_id').value = val.id;
+        });
+      },
+      error: function(xhr, status, error) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+  }
+
+  function validateNumber() {
+    let jumlahMasuk = parseInt(document.getElementById('jumlah_masuk').value);
+    let jumlahKeluar = parseInt(document.getElementById('jumlah_keluar').value);
+
+    if (jumlahKeluar > jumlahMasuk) {
+      // document.getElementById('sub').disabled = false;
+      document.getElementById('submit_stokkeluar').disabled = true;
+      Swal.fire({
+        timer: 4000,
+        title: 'Jumlah lebih besar daripada Jumlah Stok!',
+        icon: 'error',
+        timerProgressBar: true,
+        showConfirmButton: false
+      })
+    } else {
+      document.getElementById('submit_stokkeluar').disabled = false;
+    }
+  }
+
+  $("#harga, #jumlah_keluar").keyup(function() {
+    let harga = $('#harga').val();
+    let jumlah_keluar = $('#jumlah_keluar').val();
+    let kali = Number(harga) * Number(jumlah_keluar);
+    if (harga != "" && jumlah_keluar != "") {
+      $('#jumlahHarga').val(kali);
+    } else {
+      $('#jumlahHarga').val("");
+    }
+  })
 </script>
 <script>
   var base_url = '<?= base_url() ?>'

@@ -29,7 +29,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
-                <a href="<?= base_url('produk/add') ?>" class="btn btn-primary">Tambah Data</a>
+                <a href="<?= base_url('stokkeluar/add') ?>" class="btn btn-primary">Tambah Data</a>
               </h3>
             </div>
             <!-- /.card-header -->
@@ -44,28 +44,28 @@
                   <tr>
                     <th>No</th>
                     <th>Nama Produk</th>
-                    <th>Kategori</th>
-                    <th>Satuan</th>
-                    <th>Harga</th>
-                    <!-- <th>Stock (Data Masuk)</th> -->
+                    <th>Jumlah</th>
+                    <th>Harga (Satuan)</th>
+                    <th>Total Harga</th>
+                    <th>Keterangan</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $i = 1;
-                  foreach ($dataProduk as $produk) :
+                  foreach ($dataStokkeluar as $stokkeluar) :
                   ?>
                     <tr>
                       <td style="text-align: center;"><?= $i++; ?></td>
-                      <td><?= $produk->produk_nama; ?></td>
-                      <td><?= $produk->kategori_nama; ?></td>
-                      <td><?= $produk->satuan_nama; ?></td>
-                      <td>Rp. <?= rupiah($produk->harga); ?></td>
-                      <!-- <td></td> -->
+                      <td><?= $stokkeluar->produk_nama; ?></td>
+                      <td style="text-align: center;"><?= $stokkeluar->jumlah; ?> &nbsp; <?= $stokkeluar->satuan_nama; ?></td>
+                      <td>Rp. <?= rupiah($stokkeluar->harga); ?></td>
+                      <td>Rp. <?= rupiah($stokkeluar->total_harga); ?></td>
+                      <td><?= $stokkeluar->keterangan; ?></td>
                       <td style="text-align: center;">
-                        <a href="<?= base_url('produk/edit/' . $produk->id); ?>" class="btn btn-success">Edit</a>
-                        <button class="btn btn-danger delete-produk" data-id="<?= $produk->id; ?>">Hapus</button>
+                        <a href="<?= base_url('stokkeluar/edit/' . $stokkeluar->id); ?>" class="btn btn-success">Edit</a>
+                        <button class="btn btn-danger delete-stokkeluar" data-id="<?= $stokkeluar->id; ?>">Hapus</button>
                       </td>
                     </tr>
                   <?php endforeach; ?>

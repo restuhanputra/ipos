@@ -38,6 +38,21 @@ if (!function_exists('usetFlash')) {
 }
 
 /**
+ * @description Cek session user yang tidak login
+ *
+ * @return void
+ */
+if (!function_exists('cekUser')) {
+  function cekUser()
+  {
+    $ci = get_instance();
+    if ($ci->session->userdata("id") == null) {
+      redirect('login', 'refresh');
+    }
+  }
+}
+
+/**
  * @description format rupiah
  *
  * @return void

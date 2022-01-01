@@ -54,4 +54,10 @@ $(document).ready(function () {
     deleteQuestion(url, "Yakin akan menghapus data ini ?");
   });
 
+  $(document).on('click', '.delete-stokkeluar', function () {
+    var id = $(this).data("id");
+    var url = `${base_url}stokkeluar/delete/${id}`;
+    deleteQuestion(url, "Yakin akan menghapus data ini ?");
+  });
+
 });
