@@ -60,4 +60,10 @@ $(document).ready(function () {
     deleteQuestion(url, "Yakin akan menghapus data ini ?");
   });
 
+  $(document).on('click', '.delete-pengguna', function () {
+    var id = $(this).data("id");
+    var url = `${base_url}pengguna/delete/${id}`;
+    deleteQuestion(url, "Yakin akan menghapus data ini ?");
+  });
+
 });
