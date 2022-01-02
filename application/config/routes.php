@@ -87,5 +87,11 @@ $route['stokkeluar/add']           = 'Stokkeluar/create';
 $route['stokkeluar/delete/(:num)'] = 'Stokkeluar/delete/$1';
 $route['stokkeluar/edit/(:num)']   = 'Stokkeluar/update/$1';
 
+// PENGGUNA
+$route['pengguna']               = 'Pengguna/index';
+$route['pengguna/add']           = 'Pengguna/create';
+$route['pengguna/delete/(:num)'] = 'Pengguna/delete/$1';
+$route['pengguna/edit/(:num)']   = 'Pengguna/update/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
