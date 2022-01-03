@@ -97,14 +97,21 @@
         </li>
         <!-- /.Stok -->
         <!-- Pengguna -->
-        <li class="nav-item">
-          <a href="<?= base_url('pengguna') ?>" class="nav-link <?= $this->uri->segment(1) === 'pengguna' ? 'active' : ''; ?>">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              Pengguna
-            </p>
-          </a>
-        </li>
+        <?php if ($this->session->userdata("role") == 1) {
+        ?>
+          <li class="nav-item">
+            <a href="<?= base_url('pengguna') ?>" class="nav-link <?= $this->uri->segment(1) === 'pengguna' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Pengguna
+              </p>
+            </a>
+          </li>
+
+        <?php
+        }
+        ?>
+
         <!-- /.Pengguna -->
         <!-- Logout -->
         <li class="nav-item">
