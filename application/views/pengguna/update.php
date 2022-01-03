@@ -73,8 +73,20 @@
                 <div class="form-group">
                   <label for="foto">Upload Foto</label>
                   <br>
-                  <?php $foto = './uploads/users/' . $pengguna->photo; ?>
-                  <img src=" <?= base_url($foto); ?>" class="img-circle img-thumbnail" alt="User Image" style="height:100px; width:100px;">
+                  <?php
+                  if (isset($pengguna->photo)) {
+                    $foto = './uploads/users/' . $pengguna->photo;
+                  }
+                  ?>
+                  <?php
+                  if (isset($foto)) {
+                  ?>
+                    <img src=" <?= base_url($foto); ?>" class="img-circle img-thumbnail" alt="User Image" style="height:100px; width:100px;">
+                  <?php
+                  } else {
+                    NULL;
+                  }
+                  ?>
                   <div class="input-group mt-2">
                     <div class="custom-file">
                       <input type="file" name="foto">
