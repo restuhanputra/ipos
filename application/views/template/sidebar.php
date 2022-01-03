@@ -38,7 +38,7 @@
         <!-- Produk -->
         <li class="nav-item <?= $this->uri->segment(1) === 'produk' || $this->uri->segment(1) === 'kategori' || $this->uri->segment(1) === 'satuan' ? 'menu-open' : 'menu-close'; ?>"">
           <a href=" #" class="nav-link">
-          <i class="nav-icon fas fa-archive"></i>
+          <i class="nav-icon fab fa-product-hunt"></i>
           <p>
             Produk
             <i class="right fas fa-angle-left"></i>
@@ -112,8 +112,17 @@
         <?php
         }
         ?>
-
         <!-- /.Pengguna -->
+        <!-- Konfigurasi -->
+        <li class="nav-item">
+          <a href="<?= base_url('konfigurasi') ?>" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Konfigurasi
+            </p>
+          </a>
+        </li>
+        <!-- /.Konfigurasi -->
         <!-- Logout -->
         <li class="nav-item">
           <a href="<?= base_url('logout') ?>" class="nav-link">
