@@ -53,6 +53,24 @@ if (!function_exists('cekUser')) {
 }
 
 /**
+ * @description Cek session user yang tidak login
+ *
+ * @return void
+ */
+if (!function_exists('userInfo')) {
+  function userInfo()
+  {
+    $ci   = get_instance();
+    $ci->load->model("Pengguna_model", "Pengguna");
+    if ($ci->session->userdata("id")) {
+      $id   = $ci->session->userdata("id");
+      $data = $ci->Pengguna->getDataBy(['id' => $id])->row();
+      return $data;
+    }
+  }
+}
+
+/**
  * @description Cek session user untuk role Admin
  *
  * @return void
