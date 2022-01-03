@@ -8,6 +8,7 @@ class Satuan extends CI_Controller
     parent::__construct();
     $this->load->model("Satuan_model", "Satuan");
     $this->redirect = "satuan";
+    cekUser();
   }
 
   /**

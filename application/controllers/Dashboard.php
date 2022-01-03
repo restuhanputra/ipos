@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller
     $this->load->model("Stokmasuk_model", "Stokmasuk");
     $this->load->model("Stokkeluar_model", "Stokkeluar");
     // $this->redirect = "login";
+    cekUser();
   }
 
   /**

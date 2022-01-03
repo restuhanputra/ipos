@@ -10,6 +10,7 @@ class Produk extends CI_Controller
     $this->load->model("Kategori_model", "Kategori");
     $this->load->model("Satuan_model", "Satuan");
     $this->redirect = "produk";
+    cekUser();
   }
 
   /**

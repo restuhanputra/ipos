@@ -8,6 +8,7 @@ class Kategori extends CI_Controller
     parent::__construct();
     $this->load->model("Kategori_model", "Kategori");
     $this->redirect = "kategori";
+    cekUser();
   }
 
   /**

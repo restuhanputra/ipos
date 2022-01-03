@@ -9,6 +9,7 @@ class Stokmasuk extends CI_Controller
     $this->load->model("Stokmasuk_model", "Stokmasuk");
     $this->load->model("Produk_model", "Produk");
     $this->redirect = "stokmasuk";
+    cekUser();
   }
 
   /**
