@@ -8,6 +8,8 @@ class Pengguna extends CI_Controller
     parent::__construct();
     $this->load->model("Pengguna_model", "Pengguna");
     $this->redirect = "pengguna";
+    cekUser();
+    adminOnly();
   }
 
   /**
