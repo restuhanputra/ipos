@@ -46,8 +46,23 @@ if (!function_exists('cekUser')) {
   function cekUser()
   {
     $ci = get_instance();
-    if ($ci->session->userdata("id") == null) {
+    if ($ci->session->userdata("id") == null || $ci->session->userdata("status") != "login") {
       redirect('login', 'refresh');
+    }
+  }
+}
+
+/**
+ * @description Cek session user untuk role Admin
+ *
+ * @return void
+ */
+if (!function_exists('adminOnly')) {
+  function adminOnly()
+  {
+    $ci = get_instance();
+    if ($ci->session->userdata("role") != 1) {
+      redirect('dashboard', 'refresh');
     }
   }
 }
