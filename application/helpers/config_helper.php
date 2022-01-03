@@ -53,7 +53,7 @@ if (!function_exists('cekUser')) {
 }
 
 /**
- * @description Cek session user yang tidak login
+ * @description Get data user yang sedang login
  *
  * @return void
  */
