@@ -93,5 +93,8 @@ $route['pengguna/add']           = 'Pengguna/create';
 $route['pengguna/delete/(:num)'] = 'Pengguna/delete/$1';
 $route['pengguna/edit/(:num)']   = 'Pengguna/update/$1';
 
+// PENGGUNA
+$route['konfigurasi'] = 'Konfigurasi/index';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
