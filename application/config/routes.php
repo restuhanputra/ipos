@@ -96,5 +96,8 @@ $route['pengguna/edit/(:num)']   = 'Pengguna/update/$1';
 // PENGGUNA
 $route['konfigurasi'] = 'Konfigurasi/index';
 
+// PROFILE
+$route['profile'] = 'Profile/index';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
