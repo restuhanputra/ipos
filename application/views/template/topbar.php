@@ -38,6 +38,11 @@
        </div>
      </li> -->
      <li class="nav-item">
+       <a class="nav-link">
+         <p><i class="fas fa-clock"></i> Login Terakhir: <?= date('H:i', strtotime(userInfo()->last_login)); ?>, <?= indonesian_date(userInfo()->last_login); ?></p>
+       </a>
+     </li>
+     <li class="nav-item">
        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
          <i class="fas fa-expand-arrows-alt"></i>
        </a>
