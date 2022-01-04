@@ -71,6 +71,22 @@ if (!function_exists('userInfo')) {
 }
 
 /**
+ * @description Get data konfigurasi website
+ *
+ * @return void
+ */
+if (!function_exists('webInfo')) {
+  function webInfo()
+  {
+    $ci   = get_instance();
+    $ci->load->model("Konfigurasi_model", "Konfigurasi");
+    $data = $ci->Konfigurasi->getDataBy(['id' => 1])->row();
+    return $data;
+  }
+}
+
+
+/**
  * @description Cek session user untuk role Admin
  *
  * @return void

@@ -3,8 +3,7 @@
   <!-- Brand Logo -->
   <a href="<?= base_url() ?>" class="brand-link">
     <img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <!-- <span class="brand-text font-weight-light">AdminLTE 3</span> -->
-    <span class="brand-text font-weight-light">Ipos</span>
+    <span class="brand-text font-weight-light"><?= webInfo()->nama_web; ?></span>
   </a>
 
   <!-- Sidebar -->
@@ -13,7 +12,7 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
         <?php $photo = './uploads/users/' . userInfo()->photo; ?>
-        <img src="<?= $photo; ?>" class="img-circle elevation-2" alt="User Image">
+        <img src="<?= base_url($photo); ?>" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
         <a href="#" class="d-block"><?= ucfirst(userInfo()->nama); ?></a>
@@ -97,12 +96,22 @@
           </ul>
         </li>
         <!-- /.Stok -->
+        <!-- Profile -->
+        <li class="nav-item">
+          <a href="<?= base_url('profile') ?>" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Profile
+            </p>
+          </a>
+        </li>
+        <!-- /.Profile -->
         <!-- Pengguna -->
         <?php if ($this->session->userdata("role") == 1) {
         ?>
           <li class="nav-item">
             <a href="<?= base_url('pengguna') ?>" class="nav-link <?= $this->uri->segment(1) === 'pengguna' ? 'active' : ''; ?>">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Pengguna
               </p>

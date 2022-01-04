@@ -90,7 +90,7 @@
               <p class="font-weight-bold text-uppercase">Pengguna</p>
             </div>
             <div class="icon">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-users"></i>
             </div>
             <a href="<?= base_url('pengguna'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
