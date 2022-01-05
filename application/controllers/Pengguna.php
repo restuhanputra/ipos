@@ -61,7 +61,7 @@ class Pengguna extends CI_Controller
           $dataInsert = [
             'nip'      => htmlspecialchars($this->input->post("nip")),
             'email'    => htmlspecialchars($this->input->post("email")),
-            'password' => sha1(htmlspecialchars($this->input->post("password"))),
+            'password' => sha1($this->input->post("password")),
             'nama'     => htmlspecialchars($this->input->post("nama")),
             'photo'    => $foto['file_name'],
             'role'     => htmlspecialchars($this->input->post("role")),
@@ -71,7 +71,7 @@ class Pengguna extends CI_Controller
         $dataInsert = [
           'nip'      => htmlspecialchars($this->input->post("nip")),
           'email'    => htmlspecialchars($this->input->post("email")),
-          'password' => sha1(htmlspecialchars($this->input->post("password"))),
+          'password' => sha1($this->input->post("password")),
           'nama'     => htmlspecialchars($this->input->post("nama")),
           'role'     => htmlspecialchars($this->input->post("role")),
         ];
@@ -149,19 +149,30 @@ class Pengguna extends CI_Controller
               unlink($target_file);
             }
             $foto = $this->upload->data();
-            $dataUpdate = [
-              'email'      => htmlspecialchars($this->input->post("email")),
-              'password'   => sha1(htmlspecialchars($this->input->post("password"))),
-              'nama'       => htmlspecialchars($this->input->post("nama")),
-              'photo'      => $foto['file_name'],
-              'role'       => htmlspecialchars($this->input->post("role")),
-              'updated_at' => date("Y-m-d H:i:s")
-            ];
+            $pass = $this->input->post("password");
+            if ($pass != null) {
+              $dataUpdate = [
+                'email'      => htmlspecialchars($this->input->post("email")),
+                'password' => sha1($this->input->post("password")),
+                'nama'       => htmlspecialchars($this->input->post("nama")),
+                'photo'      => $foto['file_name'],
+                'role'       => htmlspecialchars($this->input->post("role")),
+                'updated_at' => date("Y-m-d H:i:s")
+              ];
+            } else {
+              $dataUpdate = [
+                'email'      => htmlspecialchars($this->input->post("email")),
+                'nama'       => htmlspecialchars($this->input->post("nama")),
+                'photo'      => $foto['file_name'],
+                'role'       => htmlspecialchars($this->input->post("role")),
+                'updated_at' => date("Y-m-d H:i:s")
+              ];
+            }
           }
         } elseif ($this->input->post("password") != null) {
           $dataUpdate = [
             'email'      => htmlspecialchars($this->input->post("email")),
-            'password'   => sha1(htmlspecialchars($this->input->post("password"))),
+            'password'   => sha1($this->input->post("password")),
             'nama'       => htmlspecialchars($this->input->post("nama")),
             'role'       => htmlspecialchars($this->input->post("role")),
             'updated_at' => date("Y-m-d H:i:s")
@@ -263,24 +274,26 @@ class Pengguna extends CI_Controller
       ]
     );
 
-
-
     $this->form_validation->set_rules(
       'password',
       'Password',
-      'trim' . $required,
+      'trim|min_length[5]|max_length[8]' . $required,
       [
         'required'  => '%s wajib diisi',
+        'min_length' => '%s harus memiliki panjang minimal 5 karakter',
+        'max_length' => '%s harus memiliki panjang maximal 8 karakter'
       ]
     );
 
     $this->form_validation->set_rules(
       'password_konfirm',
       'Password Konfirmasi',
-      'trim|matches[password]' . $required,
+      'trim|matches[password]|min_length[5]|max_length[8]' . $required,
       [
         'required'  => '%s wajib diisi',
-        'matches' => '%s tidak sama dengan Password'
+        'matches' => '%s tidak sama dengan Password',
+        'min_length' => '%s harus memiliki panjang minimal 5 karakter',
+        'max_length' => '%s harus memiliki panjang maximal 8 karakter'
       ]
     );
 
