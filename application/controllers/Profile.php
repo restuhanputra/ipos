@@ -142,15 +142,21 @@ class Profile extends CI_Controller
     $this->form_validation->set_rules(
       'password',
       'Password',
-      'trim',
+      'trim|min_length[5]|max_length[8]',
+      [
+        'min_length' => '%s harus memiliki panjang minimal 5 karakter',
+        'max_length' => '%s harus memiliki panjang maximal 8 karakter'
+      ]
     );
 
     $this->form_validation->set_rules(
       'password_konfirm',
       'Password Konfirmasi',
-      'trim|matches[password]',
+      'trim|matches[password]|min_length[5]|max_length[8]',
       [
-        'matches' => '%s tidak sama dengan Password'
+        'matches' => '%s tidak sama dengan Password',
+        'min_length' => '%s harus memiliki panjang minimal 5 karakter',
+        'max_length' => '%s harus memiliki panjang maximal 8 karakter'
       ]
     );
 
