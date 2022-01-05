@@ -37,11 +37,13 @@
          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
        </div>
      </li> -->
-     <li class="nav-item">
+     <!-- <li class="nav-item">
        <a class="nav-link">
-         <p><i class="fas fa-clock"></i> Login Terakhir: <?= date('H:i', strtotime(userInfo()->last_login)); ?>, <?= indonesian_date(userInfo()->last_login); ?></p>
+         <p><i class="fas fa-clock"></i> Login Terakhir: <? //= date('H:i', strtotime(userInfo()->log)); 
+                                                          ?>, <? //= indonesian_date(userInfo()->log); 
+                                                                                                            ?></p>
        </a>
-     </li>
+     </li> -->
      <li class="nav-item">
        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
          <i class="fas fa-expand-arrows-alt"></i>
