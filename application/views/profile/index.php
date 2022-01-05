@@ -81,7 +81,10 @@
                   <?php
                   if (isset($foto)) {
                   ?>
-                    <img src=" <?= base_url($foto); ?>" class="img-circle img-thumbnail" alt="User Image" style="height:100px; width:100px;">
+                    <div class="row ml-1">
+                      <p>Foto Lama :</p>
+                      <img src=" <?= base_url($foto); ?>" class="img-circle img-thumbnail" alt="User Image" style="height:100px; width:100px;">
+                    </div>
                   <?php
                   } else {
                     NULL;
