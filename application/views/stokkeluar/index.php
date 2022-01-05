@@ -47,6 +47,10 @@
                     <th>Jumlah</th>
                     <th>Harga (Satuan)</th>
                     <th>Total Harga</th>
+                    <?php if ($this->session->userdata("role") == 1) {
+                    ?>
+                      <th>User</th>
+                    <?php } ?>
                     <th>Keterangan</th>
                     <th>Aksi</th>
                   </tr>
@@ -62,6 +66,12 @@
                       <td style="text-align: center;"><?= $stokkeluar->jumlah; ?> &nbsp; <?= $stokkeluar->satuan_nama; ?></td>
                       <td>Rp. <?= rupiah($stokkeluar->harga); ?></td>
                       <td>Rp. <?= rupiah($stokkeluar->total_harga); ?></td>
+                      <?php if ($this->session->userdata("role") == 1) {
+                      ?>
+                        <td><?= $stokkeluar->pengguna_nama; ?></td>
+                      <?php
+                      }
+                      ?>
                       <td><?= $stokkeluar->keterangan; ?></td>
                       <td style="text-align: center;">
                         <a href="<?= base_url('stokkeluar/edit/' . $stokkeluar->id); ?>" class="btn btn-success">Edit</a>

@@ -48,6 +48,10 @@
                     <th>Harga</th>
                     <th>Supplier</th>
                     <th>Tanggal</th>
+                    <?php if ($this->session->userdata("role") == 1) {
+                    ?>
+                      <th>User</th>
+                    <?php } ?>
                     <th>Keterangan</th>
                     <th>Aksi</th>
                   </tr>
@@ -68,6 +72,12 @@
                       <td>Rp. <?= rupiah($stokmasuk->harga); ?></td>
                       <td><?= $stokmasuk->supplier; ?></td>
                       <td style="text-align: center;"><?= indonesian_date($stokmasuk->updated_at ? $stokmasuk->updated_at : $stokmasuk->create_at); ?></td>
+                      <?php if ($this->session->userdata("role") == 1) {
+                      ?>
+                        <td><?= $stokmasuk->pengguna_nama; ?></td>
+                      <?php
+                      }
+                      ?>
                       <td><?= $stokmasuk->keterangan; ?></td>
                       <td style="text-align: center;">
                         <a href="<?= base_url('stokmasuk/edit/' . $stokmasuk->id); ?>" class="btn btn-success">Edit</a>
