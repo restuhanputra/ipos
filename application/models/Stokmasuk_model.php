@@ -10,6 +10,7 @@ class Stokmasuk_model extends CI_Model
     $this->table_produk   = 'produk';
     $this->table_kategori = 'produk_kategori';
     $this->table_satuan   = 'produk_satuan';
+    $this->table_pengguna = 'pengguna';
   }
 
   public function getAllData()
@@ -20,12 +21,16 @@ class Stokmasuk_model extends CI_Model
                       produk.satuan_id as satuan_id,
                       produk.harga as harga,
                       produk_kategori.kategori_nama as kategori_nama,
-                      produk_satuan.satuan_nama as satuan_nama');
+                      produk_satuan.satuan_nama as satuan_nama,
+                      pengguna.id as pengguna_id,
+                      pengguna.nama as pengguna_nama');
     $this->db->from($this->table);
     $this->db->join($this->table_produk, 'produk.id = stok_masuk.produk_id');
     $this->db->join($this->table_kategori, 'produk_kategori.id = produk.kategori_id');
     $this->db->join($this->table_satuan, 'produk_satuan.id = produk.satuan_id');
-    $this->db->order_by('produk.id', 'ASC');
+    $this->db->join($this->table_pengguna, 'pengguna.id = stok_masuk.pengguna_id');
+    // $this->db->order_by('produk.id', 'ASC');
+    $this->db->order_by('stok_masuk.id', 'ASC');
     return $this->db->get();
   }
 

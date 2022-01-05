@@ -11,6 +11,7 @@ class Stokkeluar_model extends CI_Model
     $this->table_produk    = 'produk';
     $this->table_kategori  = 'produk_kategori';
     $this->table_satuan    = 'produk_satuan';
+    $this->table_pengguna  = 'pengguna';
   }
 
   public function getAllData()
@@ -18,10 +19,14 @@ class Stokkeluar_model extends CI_Model
     $this->db->select('stok_keluar.*, 
                       produk.produk_nama as produk_nama,
                       produk.satuan_id as satuan_id,
-                      produk_satuan.satuan_nama as satuan_nama');
+                      produk_satuan.satuan_nama as satuan_nama,
+                      pengguna.id as pengguna_id,
+                      pengguna.nama as pengguna_nama');
     $this->db->from($this->table);
     $this->db->join($this->table_produk, 'produk.id = stok_keluar.produk_id');
     $this->db->join($this->table_satuan, 'produk_satuan.id = produk.satuan_id');
+    $this->db->join($this->table_pengguna, 'pengguna.id = stok_keluar.pengguna_id');
+    $this->db->order_by('stok_keluar.id', 'ASC');
     return $this->db->get();
   }
 
