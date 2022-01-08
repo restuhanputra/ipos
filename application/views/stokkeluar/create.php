@@ -34,6 +34,11 @@
                 <input type="hidden" name="stok_masuk_id" id="stok_masuk_id">
 
                 <div class="form-group">
+                  <label for="no_transaksi">No Transaksi</label>
+                  <input type="text" name="no_transaksi" class="form-control" placeholder="No Transaksi" value="<?= $noTransaksi; ?>" readonly>
+                </div>
+
+                <div class="form-group">
                   <label for="produk_id">Produk</label>
                   <select id="selectPlugin" class="form-control <?= form_error('produk_id') ? 'is-invalid' : ''; ?>" name="produk_id" id="produk_id" onchange="return autofill_stokkeluar(this.value)">
                     <option value="">Pilih Produk</option>

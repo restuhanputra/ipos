@@ -34,6 +34,11 @@
                 <input type="hidden" name="produk_id" value="<?= $stokkeluar->produk_id; ?>">
 
                 <div class="form-group">
+                  <label for="no_transaksi">No Transaksi</label>
+                  <input type="text" name="no_transaksi" class="form-control" placeholder="No Transaksi" value="<?= $stokkeluar->no_transaksi; ?>" readonly>
+                </div>
+
+                <div class="form-group">
                   <label for="produk">Nama Produk</label>
                   <input type="text" class="form-control" placeholder="Nama Produk" value="<?= $stokkeluar->produk_nama; ?>" disabled>
                 </div>
