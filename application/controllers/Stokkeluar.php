@@ -41,13 +41,16 @@ class Stokkeluar extends CI_Controller
     $this->_validation();
     if ($this->form_validation->run() == FALSE) {
       $dataProduk = $this->Produk->getAllData();
+      $noTransaksi = $this->Stokkeluar->getNoTransaksi();
       $data = [
-        'title'      => 'Tambah Data Stok Keluar',
-        'dataProduk' => $dataProduk->result()
+        'title'       => 'Tambah Data Stok Keluar',
+        'dataProduk'  => $dataProduk->result(),
+        'noTransaksi' => $noTransaksi
       ];
       $page = 'stokkeluar/create';
       template($page, $data);
     } else {
+      $no_transaksi  = htmlspecialchars($this->input->post("no_transaksi"));
       $stok_masuk_id = htmlspecialchars($this->input->post("stok_masuk_id"));
       $produk_id     = htmlspecialchars($this->input->post("produk_id"));
       $jumlah_keluar = $this->input->post("jumlah_keluar");
@@ -60,6 +63,7 @@ class Stokkeluar extends CI_Controller
       $totalHarga = (int)($hargaProduk * $jumlah_keluar);
 
       $dataInsert = [
+        'no_transaksi' => $no_transaksi,
         'stok_masuk_id' => $stok_masuk_id,
         'produk_id'     => $produk_id,
         'harga'         => $hargaProduk,
