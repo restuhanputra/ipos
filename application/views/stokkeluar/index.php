@@ -43,10 +43,12 @@
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>No Transaksi</th>
                     <th>Nama Produk</th>
                     <th>Jumlah</th>
                     <th>Harga (Satuan)</th>
                     <th>Total Harga</th>
+                    <th>Tanggal</th>
                     <?php if ($this->session->userdata("role") == 1) {
                     ?>
                       <th>User</th>
@@ -62,10 +64,12 @@
                   ?>
                     <tr>
                       <td style="text-align: center;"><?= $i++; ?></td>
+                      <td style="text-align: center;"><?= $stokkeluar->no_transaksi; ?></td>
                       <td><?= $stokkeluar->produk_nama; ?></td>
                       <td style="text-align: center;"><?= $stokkeluar->jumlah; ?> &nbsp; <?= $stokkeluar->satuan_nama; ?></td>
                       <td>Rp. <?= rupiah($stokkeluar->harga); ?></td>
                       <td>Rp. <?= rupiah($stokkeluar->total_harga); ?></td>
+                      <td style="text-align: center;"><?= indonesian_date($stokkeluar->updated_at ? $stokkeluar->updated_at : $stokkeluar->create_at); ?></td>
                       <?php if ($this->session->userdata("role") == 1) {
                       ?>
                         <td><?= $stokkeluar->pengguna_nama; ?></td>
