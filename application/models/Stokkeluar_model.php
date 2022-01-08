@@ -30,6 +30,23 @@ class Stokkeluar_model extends CI_Model
     return $this->db->get();
   }
 
+  function getNoTransaksi()
+  {
+    $q = $this->db->query("SELECT MAX(RIGHT(no_transaksi,4)) AS kode_max FROM stok_keluar WHERE DATE(create_at)=CURDATE()");
+    $kd = "";
+    if ($q->num_rows() > 0) {
+      foreach ($q->result() as $k) {
+        $tmp = ((int)$k->kode_max) + 1;
+        $kd = sprintf("%04s", $tmp);
+      }
+    } else {
+      $kd = "0001";
+    }
+    $stokmasuk = "STK-";
+    date_default_timezone_set('Asia/Jakarta');
+    return $stokmasuk . date('dmy') . $kd;
+  }
+
   public function getajax($data)
   {
     $this->db->select(
