@@ -43,6 +43,7 @@
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>No Transaksi</th>
                     <th>Nama Produk</th>
                     <th>Jumlah</th>
                     <th>Harga</th>
@@ -63,6 +64,7 @@
                   ?>
                     <tr>
                       <td style="text-align: center;"><?= $i++; ?></td>
+                      <td style="text-align: center;"><?= $stokmasuk->no_transaksi; ?></td>
                       <td>
                         <a href="<?= base_url('produk/edit/' . $stokmasuk->produk_id); ?>">
                           <?= $stokmasuk->produk_nama; ?>
@@ -70,7 +72,11 @@
                       </td>
                       <td style="text-align: center;"><?= $stokmasuk->jumlah; ?> &nbsp; <?= $stokmasuk->satuan_nama; ?></td>
                       <td>Rp. <?= rupiah($stokmasuk->harga); ?></td>
-                      <td><?= $stokmasuk->supplier; ?></td>
+                      <td>
+                        <a href="<?= base_url('supplier/edit/' . $stokmasuk->supplier_id); ?>">
+                          <?= $stokmasuk->supplier_nama; ?>
+                        </a>
+                      </td>
                       <td style="text-align: center;"><?= indonesian_date($stokmasuk->updated_at ? $stokmasuk->updated_at : $stokmasuk->create_at); ?></td>
                       <?php if ($this->session->userdata("role") == 1) {
                       ?>
