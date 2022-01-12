@@ -40,22 +40,33 @@ class Stokmasuk extends CI_Controller
     $this->_validation(null, null);
     if ($this->form_validation->run() == FALSE) {
 
-      $dataProduk = $this->Produk->getAllData();
+      $dataProduk  = $this->Produk->getAllData();
+      $noTransaksi = $this->Stokmasuk->getTransaksi();
       $data = [
-        'title'      => 'Tambah Data Stok Masuk',
-        'dataProduk' => $dataProduk->result()
+        'title'       => 'Tambah Data Stok Masuk',
+        'dataProduk'  => $dataProduk->result(),
+        'noTransaksi' => $noTransaksi,
       ];
       $page = 'stokmasuk/create';
       template($page, $data);
     } else {
-      $dataInsert = [
-        'produk_id'   => htmlspecialchars($this->input->post("produk_id")),
-        'jumlah'      => htmlspecialchars($this->input->post("jumlah")),
-        'keterangan'  => htmlspecialchars($this->input->post("keterangan")),
-        'supplier'    => htmlspecialchars($this->input->post("supplier")),
-        'pengguna_id' => $this->session->userdata("id")
+      $dataInsertSupplier = [
+        'nama'       => htmlspecialchars($this->input->post("supplier")),
+        'perusahaan' => htmlspecialchars($this->input->post("perusahaan")),
+        'no_telp'    => htmlspecialchars($this->input->post("no_telp")),
+        'alamat'     => htmlspecialchars($this->input->post("alamat")),
       ];
-      $insert = $this->Stokmasuk->insert($dataInsert);
+
+      $dataInsert = [
+        'no_transaksi' => $this->input->post("no_transaksi"),
+        'produk_id'    => htmlspecialchars($this->input->post("produk_id")),
+        'jumlah'       => htmlspecialchars($this->input->post("jumlah")),
+        'keterangan'   => htmlspecialchars($this->input->post("keterangan")),
+        'pengguna_id'  => $this->session->userdata("id")
+      ];
+
+
+      $insert = $this->Stokmasuk->insert($dataInsertSupplier, $dataInsert);
       if ($insert > 0) {
         $this->session->set_flashdata("success", "Data berhasil disimpan");
       } else {
@@ -111,7 +122,6 @@ class Stokmasuk extends CI_Controller
         template($page, $data);
       } else {
         $dataUpdate = [
-          // 'produk_id'   => htmlspecialchars($this->input->post("produk_id")),
           'jumlah'      => htmlspecialchars($this->input->post("jumlah")),
           'keterangan'  => htmlspecialchars($this->input->post("keterangan")),
           'supplier'    => htmlspecialchars($this->input->post("supplier")),
@@ -159,9 +169,9 @@ class Stokmasuk extends CI_Controller
    */
   private function _validation($post = null, $aksi = null)
   {
-    $postStokmasuk = $this->input->post("produk_id");
+    $postStokmasuk = $this->input->post("supplier");
     if ($postStokmasuk != $post) {
-      $is_unique = '|is_unique[stok_masuk.produk_id]';
+      $is_unique = '|is_unique[supplier.nama]';
     } else {
       $is_unique = '';
     }
@@ -170,10 +180,18 @@ class Stokmasuk extends CI_Controller
       $this->form_validation->set_rules(
         'produk_id',
         'Produk',
-        'trim|required' . $is_unique,
+        'trim|required',
         [
           'required'  => '%s wajib dipilih',
-          'is_unique' => '%s sudah ada, silahkan anda update pada tombol edit',
+        ]
+      );
+      $this->form_validation->set_rules(
+        'supplier',
+        'Nama Supplier',
+        'required' . $is_unique,
+        [
+          'required'  => '%s wajib dipilih',
+          'is_unique' => '%s sudah ada',
         ]
       );
     }
@@ -188,8 +206,16 @@ class Stokmasuk extends CI_Controller
     );
 
     $this->form_validation->set_rules(
-      'supplier',
-      'Nama Supplier',
+      'perusahaan',
+      'Perusahaan',
+      'required',
+      [
+        'required' => '%s wajib diisi',
+      ],
+    );
+    $this->form_validation->set_rules(
+      'no_telp',
+      'No. Telepon',
       'required',
       [
         'required' => '%s wajib diisi',
