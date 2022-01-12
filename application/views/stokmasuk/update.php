@@ -33,6 +33,10 @@
 
                 <!-- <input type="hidden" name="produk_id" value="<? //= $stokmasuk->produk_id; 
                                                                   ?>"> -->
+                <div class="form-group">
+                  <label for="no_transaksi">No Transakasi</label>
+                  <input type="text" name="no_transaksi" class="form-control" placeholder="No Transakasi" value="<?= $stokmasuk->no_transaksi; ?>" readonly>
+                </div>
 
                 <div class="form-group">
                   <label for="produk">Nama Produk</label>
@@ -48,7 +52,7 @@
 
                 <div class="form-group">
                   <label for="supplier">Nama Supplier</label>
-                  <input type="text" name="supplier" class="form-control <?= form_error('supplier') ? 'is-invalid' : ''; ?>" placeholder="Nama Supplier" value="<?= set_value('satuan') ? set_value('supplier') : $stokmasuk->supplier; ?>">
+                  <input type="text" name="supplier" class="form-control <?= form_error('supplier') ? 'is-invalid' : ''; ?>" placeholder="Nama Supplier" value="<?= set_value('satuan') ? set_value('supplier') : $stokmasuk->supplier_nama; ?>" readonly>
                   <span class="error invalid-feedback"><?= form_error('supplier') ?></span>
                 </div>
 
