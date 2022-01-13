@@ -60,11 +60,6 @@ class Stokmasuk_model extends CI_Model
   public function getajax($data)
   {
     return $this->db->get_where($this->table_produk, $data);
-    // $this->db->select('produk.*,
-    //                    stok_masuk.jumlah as jumlah');
-    // $this->db->from($this->table_produk);
-    // $this->db->join($this->table, 'stok_masuk.id = produk.id');
-    // return $this->db->get();
   }
 
 
@@ -116,10 +111,27 @@ class Stokmasuk_model extends CI_Model
     return $this->db->get();
   }
 
-  public function delete($data)
+  public function delete($data, $data_supplier)
   {
+    $this->db->trans_start(); # Starting Transaction
+    $this->db->trans_strict(FALSE);
+
+    // delete supplier 
+    $this->db->delete($this->table_supplier, $data_supplier);
+    // delete stokmasuk
     $this->db->delete($this->table, $data);
-    return $this->db->affected_rows();
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === FALSE) {
+      # Something went wrong.
+      $this->db->trans_rollback();
+      return FALSE;
+    } else {
+      # Everything is Perfect. 
+      # Committing data to the database.
+      $this->db->trans_commit();
+      return TRUE;
+    }
   }
 
   public function update($data, $where)
