@@ -85,7 +85,6 @@ if (!function_exists('webInfo')) {
   }
 }
 
-
 /**
  * @description Cek session user untuk role Admin
  *
@@ -98,6 +97,21 @@ if (!function_exists('adminOnly')) {
     if ($ci->session->userdata("role") != 1) {
       redirect('dashboard', 'refresh');
     }
+  }
+}
+
+if (!function_exists('getCountByKategori')) {
+  function getCountByKategori($id)
+  {
+    $ci = get_instance();
+    $ci->load->model("Stokmasuk_model", "Stokmasuk");
+    $dataStokmasuk = $ci->Stokmasuk->getDataBy(['stok_masuk.produk_id' => $id])->result();
+
+    $jumlahTotal = 0;
+    foreach ($dataStokmasuk as $stokmasuk) {
+      $jumlahTotal += $stokmasuk->jumlah;
+    }
+    return $jumlahTotal;
   }
 }
 
