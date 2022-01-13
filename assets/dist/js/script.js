@@ -71,4 +71,10 @@ $(document).ready(function () {
     var url = `${base_url}supplier/delete/${id}`;
     deleteQuestion(url, "Yakin akan menghapus data ini ?");
   });
+
+  $(document).on('click', '.delete-pelanggan', function () {
+    var id = $(this).data("id");
+    var url = `${base_url}pelanggan/delete/${id}`;
+    deleteQuestion(url, "Yakin akan menghapus data ini ?");
+  });
 });
