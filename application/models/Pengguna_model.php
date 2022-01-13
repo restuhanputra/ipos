@@ -14,6 +14,24 @@ class Pengguna_model extends CI_Model
     return $this->db->get($this->table);
   }
 
+  function getNip()
+  {
+    $q = $this->db->query("SELECT MAX(RIGHT(nip,3)) AS kode_max FROM pengguna WHERE DATE(create_at)");
+    $kd = "";
+    if ($q->num_rows() > 0) {
+      foreach ($q->result() as $k) {
+        $tmp = ((int)$k->kode_max) + 1;
+        $kd = sprintf("%03s", $tmp);
+      }
+    } else {
+      $kd = "001";
+    }
+    date_default_timezone_set('Asia/Jakarta');
+    $tahun = date("y");
+    $bulan = date("m");
+    return $tahun . $bulan . $kd;
+  }
+
   public function insert($data)
   {
     $this->db->insert($this->table, $data);

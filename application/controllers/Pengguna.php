@@ -37,10 +37,12 @@ class Pengguna extends CI_Controller
    */
   public function create()
   {
+    $nip = $this->Pengguna->getNip();
     $this->_validation();
     if ($this->form_validation->run() == FALSE) {
       $data = [
         'title' => 'Tambah Data Pengguna',
+        'nip'   => $nip,
       ];
       $page = 'pengguna/create';
       template($page, $data);

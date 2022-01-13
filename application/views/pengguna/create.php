@@ -32,8 +32,7 @@
               <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="nip">NIP</label>
-                  <input type="number" name="nip" class="form-control <?= form_error('nip') ? 'is-invalid' : ''; ?>" placeholder="NIP" value="<?= set_value('nip') ?>">
-                  <span class="error invalid-feedback"><?= form_error('nip') ?></span>
+                  <input type="number" name="nip" class="form-control" placeholder="NIP" value="<?= $nip; ?>" readonly>
                 </div>
 
                 <div class="form-group">
