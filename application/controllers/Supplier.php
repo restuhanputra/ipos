@@ -7,79 +7,8 @@ class Supplier extends CI_Controller
   {
     parent::__construct();
     $this->load->model("Supplier_model", "Supplier");
-    $this->redirect = "supplier";
+    $this->redirect = "stokmasuk";
     cekUser();
-  }
-
-  /**
-   * @description Menampilkan halaman data supplier
-   *
-   * @return void
-   */
-  public function index()
-  {
-    $dataSupplier = $this->Supplier->getAllData();
-
-    $data = [
-      'title'        => 'Data Supplier',
-      'dataSupplier' => $dataSupplier->result()
-    ];
-    $page = 'supplier/index';
-    template($page, $data);
-  }
-
-  /**
-   * @description Menampilkan halaman tambah data & add data supplier
-   *
-   * @param string $post('supplier')
-   * @return void
-   */
-  public function create()
-  {
-    $this->_validation();
-    if ($this->form_validation->run() == FALSE) {
-      $data = [
-        'title' => 'Tambah Data Supplier',
-      ];
-      $page = 'supplier/create';
-      template($page, $data);
-    } else {
-      $dataInsert = [
-        'nama'       => htmlspecialchars($this->input->post("supplier")),
-        'perusahaan' => htmlspecialchars($this->input->post("perusahaan")),
-        'no_telp'    => htmlspecialchars($this->input->post("no_telp")),
-        'alamat'     => htmlspecialchars($this->input->post("alamat")),
-      ];
-      $insert = $this->Supplier->insert($dataInsert);
-      if ($insert > 0) {
-        $this->session->set_flashdata("success", "Data berhasil disimpan");
-      } else {
-        $this->session->set_flashdata("error", "Server sedang sibuk silahkan coba lagi");
-      }
-      redirect($this->redirect);
-    }
-  }
-
-  /**
-   * @description Delete data supplier
-   *
-   * @param string $id
-   * @return void
-   */
-  public function delete($id)
-  {
-    $cek = $this->Supplier->getDataBy(['id' => $id]);
-    if ($cek->num_rows() > 0) {
-      $delete = $this->Supplier->delete(['id' => $id]);
-      if ($delete > 0) {
-        $this->session->set_flashdata("success", "Data berhasil dihapus");
-      } else {
-        $this->session->set_flashdata("error", "Server sedang sibuk silahkan coba lagi");
-      }
-    } else {
-      $this->session->set_flashdata("error", "Data tidak ada");
-    }
-    redirect($this->redirect);
   }
 
   /**
@@ -115,7 +44,7 @@ class Supplier extends CI_Controller
           'id' => $id
         ];
 
-        $update = $this->Kategori->update($dataUpdate, $where);
+        $update = $this->Supplier->update($dataUpdate, $where);
         if ($update > 0) {
           $this->session->set_flashdata("success", "Data berhasil diupdate");
         } else {
@@ -137,20 +66,12 @@ class Supplier extends CI_Controller
    */
   private function _validation($post = null)
   {
-    $postSupplier = $this->input->post("supplier");
-    if ($postSupplier != $post) {
-      $is_unique = '|is_unique[supplier.nama]';
-    } else {
-      $is_unique = '';
-    }
-
     $this->form_validation->set_rules(
       'supplier',
       'Nama Supplier',
-      'trim|required' . $is_unique,
+      'required',
       [
         'required'  => '%s wajib diisi',
-        'is_unique' => '%s sudah ada',
       ]
     );
 
