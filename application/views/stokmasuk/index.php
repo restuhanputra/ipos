@@ -44,7 +44,7 @@
                   <tr>
                     <th>No</th>
                     <th>Nama Produk</th>
-                    <th>Jumlah</th>
+                    <th>Jumlah Total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,7 +57,7 @@
                       <td>
                         <?= $produk->produk_nama; ?>
                       </td>
-                      <td style="text-align: center;"><?= getCountByKategori($produk->id); ?></td>
+                      <td style="text-align: center;"><?= getCountByKategori($produk->id); ?> &nbsp; <?= $produk->satuan_nama; ?></td>
                     </tr>
                   <?php endforeach;
                   ?>
