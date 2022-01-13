@@ -51,7 +51,7 @@
                   <span class="error invalid-feedback"><?= form_error('alamat') ?></span>
                 </div>
                 <div class="text-center">
-                  <a href="<?= base_url('supplier') ?>" class="btn btn-warning">Kembali</a>
+                  <a href="<?= base_url('stokmasuk') ?>" class="btn btn-warning">Kembali</a>
                   <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </form>
