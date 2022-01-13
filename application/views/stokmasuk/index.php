@@ -39,6 +39,54 @@
               }
             </style>
             <div class="card-body">
+              <table class="table table-striped table-bordered table-hover tabel" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Produk</th>
+                    <th>Jumlah</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $i = 1;
+                  foreach ($dataProduk as $produk) :
+                  ?>
+                    <tr>
+                      <td style="text-align: center;"><?= $i++; ?></td>
+                      <td>
+                        <?= $produk->produk_nama; ?>
+                      </td>
+                      <td style="text-align: center;"><?= getCountByKategori($produk->id); ?></td>
+                    </tr>
+                  <?php endforeach;
+                  ?>
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col-12 -->
+
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <!-- col-12 -->
+        <div class="col-12">
+          <div class="card">
+            <style>
+              table th {
+                text-align: center;
+              }
+            </style>
+            <div class="card-body">
+              <p>
+              <h5>Aktivitas</h5>
+              </p>
               <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
                 <thead>
                   <tr>
@@ -100,7 +148,6 @@
           <!-- /.card -->
         </div>
         <!-- /.col-12 -->
-
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
