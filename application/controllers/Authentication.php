@@ -44,7 +44,7 @@ class Authentication extends CI_Controller
         $this->session->set_userdata($dataUser);
         redirect('dashboard');
       } else {
-        $this->session->set_flashdata("error", "Password salah");
+        $this->session->set_flashdata("error", "Email/Password salah");
         redirect($this->redirect);
       }
     }
