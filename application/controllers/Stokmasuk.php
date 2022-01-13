@@ -85,9 +85,10 @@ class Stokmasuk extends CI_Controller
    */
   public function delete($id)
   {
-    $cek = $this->Stokmasuk->getDataBy(['stok_masuk.id' => $id]);
+    $cek         = $this->Stokmasuk->getDataBy(['stok_masuk.id' => $id]);
+    $supplier_id = $cek->row()->supplier_id;
     if ($cek->num_rows() > 0) {
-      $delete = $this->Stokmasuk->delete(['id' => $id]);
+      $delete = $this->Stokmasuk->delete(['id' => $id], ['id' => $supplier_id]);
       if ($delete > 0) {
         $this->session->set_flashdata("success", "Data berhasil dihapus");
       } else {
