@@ -105,5 +105,11 @@ $route['supplier/add']           = 'Supplier/create';
 $route['supplier/delete/(:num)'] = 'Supplier/delete/$1';
 $route['supplier/edit/(:num)']   = 'Supplier/update/$1';
 
+// PELANGGAN
+$route['pelanggan']               = 'Pelanggan/index';
+$route['pelanggan/add']           = 'Pelanggan/create';
+$route['pelanggan/delete/(:num)'] = 'Pelanggan/delete/$1';
+$route['pelanggan/edit/(:num)']   = 'Pelanggan/update/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
