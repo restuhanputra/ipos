@@ -6,7 +6,15 @@
     </div>
     <!-- /.login-logo -->
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <?php if ($this->session->flashdata("error")) {
+      ?>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fas fa-exclamation-triangle"></i><?= $this->session->flashdata("error"); ?>
+        </div>
+      <?php
+      }
+      ?>
 
       <form action="" method="POST">
         <div class="form-group">
@@ -21,26 +29,16 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-
-      <!-- <div class="social-auth-links text-center mb-3">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-          </a>
-        </div> -->
-      <!-- /.social-auth-links -->
-
       <p class="mt-2 mb-1">
-        <a href="<?= base_url('forgot') ?>">I forgot my password</a>
+        <a href="<?= base_url('forgot') ?>">Lupa Password</a>
       </p>
-      <!-- <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
-        </p> -->
     </div>
     <!-- /.login-card-body -->
   </div>
 </div>
 <!-- /.login-box -->
+<?php if ($this->session->flashdata("error")) : ?>
+  <div class="flashdata" data-flashdata="<?= $this->session->flashdata("error"); ?>" data-type="error"></div>
+<?php
+  usetFlash();
+endif; ?>
