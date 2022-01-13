@@ -27,6 +27,7 @@
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/select2/js/select2.min.js"></script>
 <!-- <script src="<? //= base_url() 
                   ?>assets/plugins/datatables-fixedheader/js/fixedHeader.bootstrap4.min.js"></script> -->
 <!-- <script src="<? //= base_url() 
@@ -71,10 +72,19 @@
       "responsive": true,
       "fixedHeader": true,
     });
+    $('.tabel').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+      "responsive": true,
+      "fixedHeader": true,
+    });
   });
 
   function autofill_stokmasuk(id) {
-    // var produkId = document.getElementById("produk_id").value;
     $.ajax({
       url: "<?php echo base_url(); ?>stokmasuk/getProduk",
       data: 'produk=' + id,
@@ -83,10 +93,8 @@
           document.getElementById('harga').value = '';
         }
         let hasil = JSON.parse(data);
-        // document.getElementById('harga').value = hasil.harga;
         $.each(hasil, function(key, val) {
           document.getElementById('harga').value = val.harga;
-          // document.getElementById('jumlah').value = val.jumlah;
         });
       },
       error: function(xhr, status, error) {

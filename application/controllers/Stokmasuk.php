@@ -20,10 +20,11 @@ class Stokmasuk extends CI_Controller
   public function index()
   {
     $dataStokmasuk = $this->Stokmasuk->getAllData();
-
+    $dataProduk    = $this->Produk->getAllData();
     $data = [
       'title'         => 'Data Stok Masuk',
-      'dataStokmasuk' => $dataStokmasuk->result()
+      'dataStokmasuk' => $dataStokmasuk->result(),
+      'dataProduk'    => $dataProduk->result(),
     ];
     $page = 'stokmasuk/index';
     template($page, $data);
@@ -169,12 +170,12 @@ class Stokmasuk extends CI_Controller
    */
   private function _validation($post = null, $aksi = null)
   {
-    $postStokmasuk = $this->input->post("supplier");
-    if ($postStokmasuk != $post) {
-      $is_unique = '|is_unique[supplier.nama]';
-    } else {
-      $is_unique = '';
-    }
+    // $postStokmasuk = $this->input->post("supplier");
+    // if ($postStokmasuk != $post) {
+    //   $is_unique = '|is_unique[supplier.nama]';
+    // } else {
+    //   $is_unique = '';
+    // }
 
     if ($aksi == null) {
       $this->form_validation->set_rules(
@@ -188,7 +189,7 @@ class Stokmasuk extends CI_Controller
       $this->form_validation->set_rules(
         'supplier',
         'Nama Supplier',
-        'required' . $is_unique,
+        'required',
         [
           'required'  => '%s wajib dipilih',
           'is_unique' => '%s sudah ada',

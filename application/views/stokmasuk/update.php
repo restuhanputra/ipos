@@ -31,8 +31,6 @@
             <div class="card-body">
               <form action="" method="POST">
 
-                <!-- <input type="hidden" name="produk_id" value="<? //= $stokmasuk->produk_id; 
-                                                                  ?>"> -->
                 <div class="form-group">
                   <label for="no_transaksi">No Transakasi</label>
                   <input type="text" name="no_transaksi" class="form-control" placeholder="No Transakasi" value="<?= $stokmasuk->no_transaksi; ?>" readonly>
