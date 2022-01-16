@@ -30,6 +30,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <a href="<?= base_url('stokmasuk/add') ?>" class="btn btn-primary">Tambah Data</a>
+                <a href="<?= base_url('laporan') ?>" class="btn btn-success ml-1">Laporan</a>
               </h3>
             </div>
             <!-- /.card-header -->
@@ -84,7 +85,7 @@
             </style>
             <div class="card-body">
               <p>
-              <h5>Aktivitas</h5>
+              <h5 class="fw-bold">Aktivitas</h5>
               </p>
               <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
                 <thead>

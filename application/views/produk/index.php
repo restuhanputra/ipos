@@ -30,6 +30,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <a href="<?= base_url('produk/add') ?>" class="btn btn-primary">Tambah Data</a>
+                <a href="<?= base_url('laporan') ?>" class="btn btn-success ml-1">Laporan</a>
               </h3>
             </div>
             <!-- /.card-header -->
@@ -47,7 +48,6 @@
                     <th>Kategori</th>
                     <th>Satuan</th>
                     <th>Harga</th>
-                    <!-- <th>Stock (Data Masuk)</th> -->
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -62,7 +62,6 @@
                       <td><?= $produk->kategori_nama; ?></td>
                       <td><?= $produk->satuan_nama; ?></td>
                       <td>Rp. <?= rupiah($produk->harga); ?></td>
-                      <!-- <td></td> -->
                       <td style="text-align: center;">
                         <a href="<?= base_url('produk/edit/' . $produk->id); ?>" class="btn btn-success">Edit</a>
                         <button class="btn btn-danger delete-produk" data-id="<?= $produk->id; ?>">Hapus</button>
