@@ -35,6 +35,21 @@
                   <input type="text" name="nama_web" class="form-control <?= form_error('nama_web') ? 'is-invalid' : ''; ?>" placeholder="Nama Website" value="<?= set_value('nama_web') ? set_value('nama_web') : $konfigurasi->nama_web; ?>">
                   <span class="error invalid-feedback"><?= form_error('nama_web') ?></span>
                 </div>
+                <div class="form-group">
+                  <label for="no_telp">No. Telp</label>
+                  <input type="number" name="no_telp" class="form-control <?= form_error('no_telp') ? 'is-invalid' : ''; ?>" placeholder="No. Telp" value="<?= set_value('no_telp') ? set_value('no_telp') : $konfigurasi->no_telp; ?>">
+                  <span class="error invalid-feedback"><?= form_error('no_telp') ?></span>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control <?= form_error('email') ? 'is-invalid' : ''; ?>" placeholder="Email" value="<?= set_value('email') ? set_value('email') : $konfigurasi->email; ?>">
+                  <span class="error invalid-feedback"><?= form_error('email') ?></span>
+                </div>
+                <div class="form-group">
+                  <label for="alamat">Alamat</label>
+                  <textarea name="alamat" cols="30" rows="5" class="form-control <?= form_error('alamat') ? 'is-invalid' : ''; ?>"><?= set_value('alamat') ? set_value('alamat') : $konfigurasi->alamat; ?></textarea>
+                  <span class="error invalid-feedback"><?= form_error('alamat') ?></span>
+                </div>
 
                 <div class="text-center">
                   <!-- <a href="<? //= base_url('nama_web') 
