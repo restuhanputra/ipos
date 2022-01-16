@@ -30,6 +30,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <a href="<?= base_url('stokkeluar/add') ?>" class="btn btn-primary">Tambah Data</a>
+                <a href="<?= base_url('laporan') ?>" class="btn btn-success ml-1">Laporan</a>
               </h3>
             </div>
             <!-- /.card-header -->
