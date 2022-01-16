@@ -96,9 +96,17 @@
           </ul>
         </li>
         <!-- /.Stok -->
+        <li class="nav-item">
+          <a href="<?= base_url('laporan') ?>" class="nav-link <?= $this->uri->segment(1) === 'laporan' ? 'active' : ''; ?>">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>
+              Laporan
+            </p>
+          </a>
+        </li>
         <!-- Profile -->
         <li class="nav-item">
-          <a href="<?= base_url('profile') ?>" class="nav-link">
+          <a href="<?= base_url('profile') ?>" class="nav-link <?= $this->uri->segment(1) === 'profile' ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-user"></i>
             <p>
               Profile
@@ -124,7 +132,7 @@
         <!-- /.Pengguna -->
         <!-- Konfigurasi -->
         <li class="nav-item">
-          <a href="<?= base_url('konfigurasi') ?>" class="nav-link">
+          <a href="<?= base_url('konfigurasi') ?>" class="nav-link <?= $this->uri->segment(1) === 'konfigurasi' ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-cog"></i>
             <p>
               Konfigurasi
