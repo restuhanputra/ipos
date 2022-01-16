@@ -113,9 +113,6 @@ $route['pelanggan/edit/(:num)']   = 'Pelanggan/update/$1';
 
 // Laporan
 $route['laporan']            = 'Laporan/index';
-$route['laporan/stokmasuk']  = 'Laporan/stokmasuk';
-$route['laporan/stokkeluar'] = 'Laporan/stokkeluar';
-$route['laporan/produk']     = 'Laporan/produk';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
