@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                   <label for="nip">NIP</label>
-                  <input type="number" name="nip" class="form-control" placeholder="NIP" value="<?= $pengguna->nip; ?>">
+                  <input type="number" name="nip" class="form-control" placeholder="NIP" value="<?= $pengguna->nip; ?>" readonly>
                 </div>
 
                 <div class="form-group">
