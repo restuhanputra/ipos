@@ -48,7 +48,6 @@ class Laporan_model extends CI_Model
     $this->db->where('DATE(' .  $this->table_stokmasuk . '.create_at) >=', date('Y-m-d', strtotime($startDate)));
     $this->db->where('DATE(' .  $this->table_stokmasuk . '.create_at) <=', date('Y-m-d', strtotime($endDate)));
     $this->db->order_by('' . $this->table_stokmasuk . '.id', 'ASC');
-    // $this->db->where('' .  $this->table_stokmasuk . '.create_at BETWEEN "' . date('Y-m-d', strtotime($startDate)) . '" and "' . date('Y-m-d', strtotime($endDate)) . '"');
     return $this->db->get()->result();
   }
 
@@ -69,41 +68,4 @@ class Laporan_model extends CI_Model
     $this->db->order_by('' . $this->table_stokkeluar . '.id', 'ASC');
     return $this->db->get()->result();
   }
-
-  // public function viewByDate($tabel, $date)
-  // {
-  //   $this->db->where('DATE(create_at)', $date); // Tambahkan where tanggal nya
-
-  //   return $this->db->get($tabel)->result(); // Tampilkan data transaksi sesuai tanggal yang diinput oleh user pada filter
-  // }
-
-  // public function viewByMonth($tabel, $month, $year)
-  // {
-  //   $this->db->where('MONTH(create_at)', $month); // Tambahkan where bulan
-  //   $this->db->where('YEAR(create_at)', $year); // Tambahkan where tahun
-
-  //   return $this->db->get($tabel)->result(); // Tampilkan data transaksi sesuai bulan dan tahun yang diinput oleh user pada filter
-  // }
-
-  // public function viewByYear($tabel, $year)
-  // {
-  //   $this->db->where('YEAR(create_at)', $year); // Tambahkan where tahun
-
-  //   return $this->db->get($tabel)->result(); // Tampilkan data transaksi sesuai tahun yang diinput oleh user pada filter
-  // }
-
-  // public function viewAll($tabel)
-  // {
-  //   return $this->db->get($tabel)->result(); // Tampilkan semua data transaksi
-  // }
-
-  // public function optionTahun($tabel)
-  // {
-  //   $this->db->select('YEAR(create_at) AS tahun'); // Ambil Tahun dari field create_at
-  //   $this->db->from($tabel); // select ke tabel transaksi
-  //   $this->db->order_by('YEAR(create_at)'); // Urutkan berdasarkan tahun secara Ascending (ASC)
-  //   $this->db->group_by('YEAR(create_at)'); // Group berdasarkan tahun pada field create_at
-
-  //   return $this->db->get()->result(); // Ambil data pada tabel transaksi sesuai kondisi diatas
-  // }
 }
