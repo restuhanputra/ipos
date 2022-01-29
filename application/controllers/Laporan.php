@@ -11,7 +11,6 @@ class Laporan extends CI_Controller
     cekUser();
   }
 
-
   public function index()
   {
     $this->_validation();
@@ -92,55 +91,5 @@ class Laporan extends CI_Controller
         'required' => '%s wajib diisi',
       ],
     );
-  }
-
-  public function stokmasuk()
-  {
-    $tanggal_awal  = $this->input->post("tanggal_awal");
-    $tanggal_akhir = $this->input->post("tanggal_akhir");
-
-    // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
-    $this->load->library('pdfgenerator');
-
-    // title dari pdf
-    $this->data['title_pdf'] = 'Laporan Stok Masuk';
-    // get data
-    $this->data['dataStokmasuk'] = $this->Laporan->viewByRangeDate('stok_masuk', $tanggal_awal, $tanggal_akhir);
-
-    // filename dari pdf ketika didownload
-    $file_pdf = 'laporan_stokmasuk';
-    // setting paper
-    $paper = 'A4';
-    //orientasi paper potrait / landscape
-    $orientation = "landscape";
-
-    $html = $this->load->view('laporan/stokmasuk', $this->data, true);
-
-    // run dompdf
-    $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
-  }
-
-  public function backup()
-  {
-    // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
-    $this->load->library('pdfgenerator');
-
-    // title dari pdf
-    $this->data['title_pdf'] = 'Laporan Penjualan Toko Kita';
-
-    // filename dari pdf ketika didownload
-    $file_pdf = 'laporan_penjualan_toko_kita';
-    // setting paper
-    $paper = 'A4';
-    //orientasi paper potrait / landscape
-    $orientation = "portrait";
-
-    // $page = 'stokmasuk/create';
-    // template($page, $data);
-
-    $html = $this->load->view('laporan/index', $this->data, true);
-
-    // run dompdf
-    $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
   }
 }
