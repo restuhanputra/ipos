@@ -15,6 +15,13 @@ class Laporan_model extends CI_Model
     $this->table_supplier   = 'supplier';
   }
 
+  /**
+   * @description Ambil semua data produk dari tanggal
+   *
+   * @param string $startDate
+   * @param string $endDate
+   * @return void
+   */
   public function produkByRangeDate($startDate, $endDate)
   {
     $this->db->select('produk.*,
@@ -29,6 +36,13 @@ class Laporan_model extends CI_Model
     return $this->db->get()->result();
   }
 
+  /**
+   * @description Ambil semua data stok masuk dari tanggal
+   *
+   * @param string $startDate
+   * @param string $endDate
+   * @return void
+   */
   public function stokmasukByRangeDate($startDate, $endDate)
   {
     $this->db->select('stok_masuk.*, 
@@ -51,6 +65,13 @@ class Laporan_model extends CI_Model
     return $this->db->get()->result();
   }
 
+  /**
+   * @description Ambil semua data stok keluar dari tanggal
+   *
+   * @param string $startDate
+   * @param string $endDate
+   * @return void
+   */
   public function stokkeluarByRangeDate($startDate, $endDate)
   {
     $this->db->select('stok_keluar.*, 

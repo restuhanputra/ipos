@@ -14,9 +14,15 @@ class Stokmasuk_model extends CI_Model
     $this->table_supplier = 'supplier';
   }
 
+  /**
+   * @description Ambil semua data
+   *
+   * @return void
+   */
   public function getAllData()
   {
-    $this->db->select('stok_masuk.*, 
+    $this->db->select('
+                      stok_masuk.*, 
                       produk.produk_nama as produk_nama,
                       produk.kategori_id as kategori_id,
                       produk.satuan_id as satuan_id,
@@ -38,7 +44,11 @@ class Stokmasuk_model extends CI_Model
     return $this->db->get();
   }
 
-
+  /**
+   * @description Ambil data nomor transaksi
+   *
+   * @return void
+   */
   function getTransaksi()
   {
     $q = $this->db->query("SELECT MAX(RIGHT(no_transaksi,4)) AS kode_max FROM stok_masuk WHERE DATE(create_at)=CURDATE()");
@@ -56,13 +66,25 @@ class Stokmasuk_model extends CI_Model
     return $stokmasuk . date('dmy') . $kd;
   }
 
-
+  /**
+   * @description Ambil data stok keluar via ajax
+   *
+   * @param string $data
+   * @return void
+   */
   public function getajax($data)
   {
     return $this->db->get_where($this->table_produk, $data);
   }
 
 
+  /**
+   * @description Menambahkan dan update data via transaction
+   *
+   * @param string $dataSupplier
+   * @param string $data
+   * @return void
+   */
   public function insert($dataSupplier, $data)
   {
     $this->db->trans_start(); # Starting Transaction
@@ -89,10 +111,17 @@ class Stokmasuk_model extends CI_Model
     }
   }
 
+  /**
+   * @description Ambil data bedasarkan $data
+   *
+   * @param string $table
+   * @param string $data
+   * @return void
+   */
   public function getDataBy($data)
   {
-    // return $this->db->get_where($this->table, $data);
-    $this->db->select('stok_masuk.*, 
+    $this->db->select('
+                      stok_masuk.*, 
                       produk.produk_nama as produk_nama,
                       produk.kategori_id as kategori_id,
                       produk.satuan_id as satuan_id,
@@ -111,6 +140,12 @@ class Stokmasuk_model extends CI_Model
     return $this->db->get();
   }
 
+  /**
+   * @description Delete data
+   *
+   * @param string $data
+   * @return void
+   */
   public function delete($data, $data_supplier)
   {
     $this->db->trans_start(); # Starting Transaction
@@ -134,6 +169,13 @@ class Stokmasuk_model extends CI_Model
     }
   }
 
+  /**
+   * @description Update data
+   *
+   * @param string $data
+   * @param string $where
+   * @return void
+   */
   public function update($data, $where)
   {
     $this->db->update($this->table, $data, $where);

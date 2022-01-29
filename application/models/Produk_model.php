@@ -11,9 +11,13 @@ class Produk_model extends CI_Model
     $this->table_satuan   = 'produk_satuan';
   }
 
+  /**
+   * @description Ambil semua data
+   *
+   * @return void
+   */
   public function getAllData()
   {
-    // return $this->db->get($this->table);
     $this->db->select('produk.*,
                       produk_kategori.kategori_nama as kategori_nama,
                       produk_satuan.satuan_nama as satuan_nama');
@@ -24,15 +28,31 @@ class Produk_model extends CI_Model
     return $this->db->get();
   }
 
+  /**
+   * @description Menambahkan data
+   *
+   * @param string $data
+   * @return void
+   */
   public function insert($data)
   {
     $this->db->insert($this->table, $data);
     return $this->db->affected_rows();
   }
 
+  /**
+   * @description Ambil data bedasarkan $data
+   *
+   * @param string $data
+   * @return void
+   */
   public function getDataBy($data)
   {
-    $this->db->select('produk.*, produk_kategori.kategori_nama as kategori_nama, produk_satuan.satuan_nama as satuan_nama');
+    $this->db->select('
+                    produk.*,
+                    produk_kategori.kategori_nama as kategori_nama, 
+                    produk_satuan.satuan_nama as satuan_nama
+                    ');
     $this->db->from($this->table);
     $this->db->join($this->table_kategori, 'produk_kategori.id = produk.kategori_id');
     $this->db->join($this->table_satuan, 'produk_satuan.id = produk.satuan_id');
@@ -40,12 +60,25 @@ class Produk_model extends CI_Model
     return $this->db->get();
   }
 
+  /**
+   * @description Delete data
+   *
+   * @param string $data
+   * @return void
+   */
   public function delete($data)
   {
     $this->db->delete($this->table, $data);
     return $this->db->affected_rows();
   }
 
+  /**
+   * @description Update data
+   *
+   * @param string $data
+   * @param string $where
+   * @return void
+   */
   public function update($data, $where)
   {
     $this->db->update($this->table, $data, $where);

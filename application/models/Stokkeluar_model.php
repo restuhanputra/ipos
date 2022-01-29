@@ -14,6 +14,11 @@ class Stokkeluar_model extends CI_Model
     $this->table_pengguna  = 'pengguna';
   }
 
+  /**
+   * @description Ambil semua data
+   *
+   * @return void
+   */
   public function getAllData()
   {
     $this->db->select('stok_keluar.*, 
@@ -30,6 +35,11 @@ class Stokkeluar_model extends CI_Model
     return $this->db->get();
   }
 
+  /**
+   * @description Ambil data nomor transaksi
+   *
+   * @return void
+   */
   function getNoTransaksi()
   {
     $q = $this->db->query("SELECT MAX(RIGHT(no_transaksi,4)) AS kode_max FROM stok_keluar WHERE DATE(create_at)=CURDATE()");
@@ -47,20 +57,34 @@ class Stokkeluar_model extends CI_Model
     return $stokmasuk . date('dmy') . $kd;
   }
 
+  /**
+   * @description Ambil data stok masuk via ajax
+   *
+   * @param string $data
+   * @return void
+   */
   public function getajax($data)
   {
-    $this->db->select(
-      'stok_masuk.id as id,
-      stok_masuk.produk_id as produk_id,
-      stok_masuk.jumlah as jumlah,
-      produk.harga as harga,'
-    );
+    $this->db->select('
+                      stok_masuk.id as id,
+                      stok_masuk.produk_id as produk_id,
+                      stok_masuk.jumlah as jumlah,
+                      produk.harga as harga,
+                      ');
     $this->db->from($this->table_stokmasuk);
     $this->db->join($this->table_produk, 'produk.id = stok_masuk.produk_id');
     $this->db->where($data);
     return $this->db->get();
   }
 
+  /**
+   * @description Menambahkan dan update data via transaction
+   *
+   * @param string $data
+   * @param string $dataUpdate
+   * @param int $id
+   * @return void
+   */
   public function insert($data, $dataUpdate, $id)
   {
     $this->db->trans_start(); # Starting Transaction
@@ -89,16 +113,24 @@ class Stokkeluar_model extends CI_Model
     }
   }
 
+  /**
+   * @description Ambil data bedasarkan $table & $data
+   *
+   * @param string $table
+   * @param string $data
+   * @return void
+   */
   public function getDataBy($table, $data)
   {
     if ($table != null) {
       return $this->db->get_where($table, $data);
     } else {
-      // return $this->db->get_where($this->table, $data);
-      $this->db->select('stok_keluar.*, 
-                      produk.produk_nama as produk_nama,
-                      produk.satuan_id as satuan_id,
-                      produk_satuan.satuan_nama as satuan_nama');
+      $this->db->select('
+                        stok_keluar.*, 
+                        produk.produk_nama as produk_nama,
+                        produk.satuan_id as satuan_id,
+                        produk_satuan.satuan_nama as satuan_nama
+                        ');
       $this->db->from($this->table);
       $this->db->join($this->table_produk, 'produk.id = stok_keluar.produk_id');
       $this->db->join($this->table_satuan, 'produk_satuan.id = produk.satuan_id');
@@ -107,12 +139,25 @@ class Stokkeluar_model extends CI_Model
     }
   }
 
+  /**
+   * @description Delete data
+   *
+   * @param string $data
+   * @return void
+   */
   public function delete($data)
   {
     $this->db->delete($this->table, $data);
     return $this->db->affected_rows();
   }
 
+  /**
+   * @description Update data
+   *
+   * @param string $data
+   * @param string $where
+   * @return void
+   */
   public function update($data, $where)
   {
     $this->db->update($this->table, $data, $where);
