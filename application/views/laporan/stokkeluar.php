@@ -39,8 +39,11 @@
 
 <body>
   <div style="text-align:center">
-    <h2> <?= $title_pdf; ?> </h2>
+    <h3><?= webInfo()->nama_web; ?></h3>
+    <h4>No. Telp <?= webInfo()->no_telp; ?> Alamat <?= webInfo()->alamat;  ?></h4>
+    <hr>
   </div>
+  <h2 style="text-align:center"><?= $title_pdf; ?></h2>
   <table id="table">
     <thead>
       <tr>
