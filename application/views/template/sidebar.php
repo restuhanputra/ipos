@@ -126,20 +126,20 @@
             </a>
           </li>
 
+          <!-- /.Pengguna -->
+          <!-- Konfigurasi -->
+          <li class="nav-item">
+            <a href="<?= base_url('konfigurasi') ?>" class="nav-link <?= $this->uri->segment(1) === 'konfigurasi' ? 'active' : ''; ?>">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Konfigurasi
+              </p>
+            </a>
+          </li>
+          <!-- /.Konfigurasi -->
         <?php
         }
         ?>
-        <!-- /.Pengguna -->
-        <!-- Konfigurasi -->
-        <li class="nav-item">
-          <a href="<?= base_url('konfigurasi') ?>" class="nav-link <?= $this->uri->segment(1) === 'konfigurasi' ? 'active' : ''; ?>">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Konfigurasi
-            </p>
-          </a>
-        </li>
-        <!-- /.Konfigurasi -->
         <!-- Logout -->
         <li class="nav-item">
           <a href="<?= base_url('logout') ?>" class="nav-link">
