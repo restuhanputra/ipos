@@ -94,7 +94,7 @@ class Authentication extends CI_Controller
         $send = $this->mailer->send($sendmail);
 
         if ($send == true) {
-          $this->session->set_flashdata("success", "Ubah password berhasil, silahkan cek email!");
+          $this->session->set_flashdata("success", "Berhasil, silahkan cek email!");
         } else {
           $this->session->set_flashdata("error", "Gagal ubah password");
         }
