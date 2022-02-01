@@ -93,9 +93,11 @@ class Authentication extends CI_Controller
         // Panggil fungsi send yang ada di librari Mailer
         $send = $this->mailer->send($sendmail);
 
-        echo "<b>" . $send['status'] . "</b><br />";
-        echo $send['message'];
-
+        if ($send == true) {
+          $this->session->set_flashdata("success", "Ubah password berhasil, silahkan cek email!");
+        } else {
+          $this->session->set_flashdata("error", "Gagal ubah password");
+        }
         redirect($this->redirect_forgot);
       }
     }
