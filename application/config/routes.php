@@ -56,6 +56,7 @@ $route['dashboard'] = 'Dashboard/index';
 // AUTHENTICATION
 $route['login']  = 'Authentication/index';
 $route['logout'] = 'Authentication/logout';
+$route['forgot'] = 'Authentication/forgot';
 
 // KATEGORI
 $route['kategori']               = 'Kategori/index';
