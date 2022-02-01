@@ -100,6 +100,11 @@ if (!function_exists('adminOnly')) {
   }
 }
 
+/**
+ * @description Ambil jumlah bedasarkan kategori
+ *
+ * @return void
+ */
 if (!function_exists('getCountByKategori')) {
   function getCountByKategori($id)
   {
