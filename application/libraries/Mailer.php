@@ -62,9 +62,11 @@ class Mailer
 
     $send = $mail->send();
     if ($send) { // Jika Email berhasil dikirim
-      $response = array('status' => 'Sukses', 'message' => 'Email berhasil dikirim');
+      // $response = array('status' => 'Sukses', 'message' => 'Email berhasil dikirim');
+      $response = true;
     } else { // Jika Email Gagal dikirim
-      $response = array('status' => 'Gagal', 'message' => 'Email gagal dikirim');
+      // $response = array('status' => 'Gagal', 'message' => 'Email gagal dikirim');
+      $response = false;
     }
 
     return $response;
