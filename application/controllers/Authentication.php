@@ -7,7 +7,9 @@ class Authentication extends CI_Controller
   {
     parent::__construct();
     $this->load->model("Authentication_model", "Auth");
+    $this->load->model("Pengguna_model", "Pengguna");
     $this->redirect = "login";
+    $this->redirect_forgot = "forgot";
   }
 
   /**
@@ -55,11 +57,47 @@ class Authentication extends CI_Controller
     $this->_validation('forgot');
     if ($this->form_validation->run() == FALSE) {
       $data = [
-        'title' => 'Forgot Password'
+        'title' => 'Lupa Password'
       ];
       $page = 'forgot';
       $this->_template($page, $data);
     } else {
+      $this->load->library('mailer');
+      $email = $this->input->post('email');
+
+      $data = $this->Pengguna->getDataBy(['email' => $email]);
+      if ($data->num_rows() > 0) {
+        $email = $data->row()->email;
+      }
+
+      // Random password
+      $randomPass  = substr(sha1(rand()), 0, 7);
+      $encriptPass = sha1($randomPass);
+
+      $password = [
+        'password' => $encriptPass
+      ];
+
+      $where = [
+        'email' => $email
+      ];
+
+      $update = $this->Auth->ubahPassword($password, $where);
+      if ($update > 0) {
+        $to_email = $email;
+        $sendmail = [
+          'to_email'   => $to_email,
+          'randomPass' => $randomPass
+        ];
+
+        // Panggil fungsi send yang ada di librari Mailer
+        $send = $this->mailer->send($sendmail);
+
+        echo "<b>" . $send['status'] . "</b><br />";
+        echo $send['message'];
+
+        redirect($this->redirect_forgot);
+      }
     }
   }
 
