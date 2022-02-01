@@ -26,4 +26,10 @@ class Authentication_model extends CI_Model
       )
     );
   }
+
+  public function ubahPassword($data, $where)
+  {
+    $this->db->update($this->table, $data, $where);
+    return $this->db->affected_rows();
+  }
 }
