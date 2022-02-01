@@ -3,30 +3,41 @@
   <div class="card">
     <div class="login-logo mt-4">
       <img src="<?= base_url() ?>assets/img/inventory.png" alt="logo-inventory" width="50%" height="50%">
-      <!-- <a href="assets/index2.html"><b>Admin</b>LTE</a> -->
     </div>
     <div class="card-body login-card-body">
-      <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+      <?php if ($this->session->flashdata("error")) {
+      ?>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fas fa-exclamation-triangle"></i> <?= $this->session->flashdata("error"); ?>
+        </div>
+      <?php
+        usetFlash();
+      }
+
+      if ($this->session->flashdata("success")) {
+      ?>
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="fas fa-check-circle"></i> <?= $this->session->flashdata("success"); ?>
+        </div>
+      <?php
+        usetFlash();
+      }
+      ?>
+      <p class="login-box-msg">Lupa Password ?</p>
 
       <form action="" method="POST">
-        <!-- <div class="card-body"> -->
         <div class="form-group">
           <label for="email">Email</label>
           <input type="text" name="email" class="form-control <?= form_error('email') ? 'is-invalid' : ''; ?>" placeholder="Enter email" value="<?= set_value('email') ?>">
           <span class="error invalid-feedback"><?= form_error('email') ?></span>
         </div>
-        <!-- <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control is-invalid" id="exampleInputPassword1" placeholder="Password" aria-describedby="exampleInputPassword1-error">
-            <span id="exampleInputPassword1-error" class="error invalid-feedback">Please provide a password</span>
-          </div> -->
-        <!-- </div> -->
-        <!-- /.card-body -->
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 
       <p class="mt-3 mb-1">
-        <a href="<?= base_url('auth') ?>">Login</a>
+        <a href="<?= base_url('login') ?>">Login</a>
       </p>
       <!-- <p class="mb-0">
         <a href="register.html" class="text-center">Register a new membership</a>
